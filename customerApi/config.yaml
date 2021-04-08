@@ -1,0 +1,6 @@
+# it's going to my personal free-tier mongodb cloud account
+userName: blaze
+password: blaze
+host: cluster0.psenm.mongodb.net
+database: blaze
+collection: customer
