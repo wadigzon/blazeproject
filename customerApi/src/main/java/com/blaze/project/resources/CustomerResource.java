@@ -77,6 +77,17 @@ public class CustomerResource {
         List<Document> documents = mongoService.findByKey(collection, "email", email);
         return Response.ok(documents).build();
 	}
+	
+	@GET
+	@Path("/count")
+	public Response getCount() {
+		// count number of records
+        long count = collection.count();
+        Map<String, Long> response = new HashMap<>();
+        response.put("count", count);
+        return Response.ok(response).build();
+	}
+	
 
 	
 	@PUT
