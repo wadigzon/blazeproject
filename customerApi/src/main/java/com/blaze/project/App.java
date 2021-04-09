@@ -30,16 +30,20 @@ public class App extends Application<ProjectConfiguration>
         LOGGER.info("Method App#run() called");
 
         MongoClientURI uri = new MongoClientURI(
-        	    "mongodb+srv://" + config.getUserName() + ":" + config.getPassword() + 
-        	    "@"+ config.getHost() + "/"+ config.getCollection() + "?retryWrites=true&w=majority");
-        	MongoClient mongoClient = new MongoClient(uri);
-    	 MongoManaged mongoManaged = new MongoManaged(mongoClient);
-         env.lifecycle().manage(mongoManaged);
-         MongoDatabase db = mongoClient.getDatabase(config.getDatabase());
-         MongoCollection<Document> collection = db.getCollection(config.getCollection());
-         LOGGER.info("Registering RESTful API resources");
-         env.jersey().register(new CustomerResource(collection, new MongoService()));
-         env.healthChecks().register("BlazeProjectHealthCheckResource",
+        	    "mongodb+srv://" 
+        	    + config.getUserName() + ":" 
+        	    + config.getPassword() + "@"
+        	    + config.getHost() + "/"
+        	    + config.getCollection() 
+        	    + "?retryWrites=true&w=majority");
+        MongoClient mongoClient = new MongoClient(uri);
+    	MongoManaged mongoManaged = new MongoManaged(mongoClient);
+        env.lifecycle().manage(mongoManaged);
+        MongoDatabase db = mongoClient.getDatabase(config.getDatabase());
+        MongoCollection<Document> collection = db.getCollection(config.getCollection());
+        LOGGER.info("Registering RESTful API resources");
+        env.jersey().register(new CustomerResource(collection, new MongoService()));
+        env.healthChecks().register("BlazeProjectHealthCheckResource",
                  new BlazeProjectHealthCheckResource(mongoClient));        	        
     }
 }

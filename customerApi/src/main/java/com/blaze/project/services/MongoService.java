@@ -1,6 +1,7 @@
 package com.blaze.project.services;
 
 import com.blaze.project.representations.Customer;
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
@@ -49,4 +50,9 @@ public class MongoService {
     public void deleteOne(MongoCollection<Document> collection, String key, String value) {
         collection.deleteOne(eq(key, value));
     }
+    public void deleteAll(MongoCollection<Document> collection) {
+    	BasicDBObject document = new BasicDBObject();
+        collection.deleteMany(document);
+    }
+    
 }

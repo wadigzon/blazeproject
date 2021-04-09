@@ -99,5 +99,15 @@ public class CustomerResource {
         Map<String, String> response = new HashMap<>();
         response.put("message", "Employee with eMail: " + email + " deleted successfully");
         return Response.ok(response).build();
-    }	
+    }
+    
+    @DELETE
+    @Timed
+    @Path("/deleteAll")
+    public Response deleteAll() {
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "deleted all documents in collection successfully");
+        mongoService.deleteAll(collection);
+        return Response.ok(response).build();
+    }
 }
