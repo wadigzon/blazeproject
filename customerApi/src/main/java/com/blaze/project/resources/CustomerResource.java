@@ -72,7 +72,13 @@ public class CustomerResource {
     @Timed
     public Response getCustomers() {
         List<Document> documents = mongoService.find(collection);
-        return Response.ok(documents).build();
+        return Response.ok(documents)
+        		.header("Access-Control-Allow-Origin", "*")
+        		.header("Access-Control-Allow-Credentials", "true")
+        		.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, HEAD")
+        		.header("Access-Control-Max-Age", "3600")
+        		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization, Origin")
+        		.build();
     }
     
 	// code

@@ -12,7 +12,6 @@ export default class DisplayCount extends Component {
             isLoading: true,
             count: undefined
         };
-        this.isLoading = this.isLoading.bind(this);
     }
     componentDidMount() {
 
@@ -46,17 +45,6 @@ export default class DisplayCount extends Component {
             errorCallback();
         }
         return getRequest(GET_CUSTOMERS_COUNT_URL, onSuccess, onError)
-    }
-
-    isLoading() {
-        //state takes precedence if available.
-        if(this.state.isLoading !== undefined) {
-            return this.state.isLoading;
-        }
-        else if(this.props.isLoading !== undefined) {
-            return this.props.isLoading;
-        }
-        return false;
     }
 
     render() {
