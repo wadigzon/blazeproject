@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=lato&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=lato&display=swap');*/
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
   font-family: 'Lato', sans-serif;
 }
 
-.home, .reports, .products {
+.home, .insert10k, .displaydata, .displaycount , .deleteall{
   display: flex;
   height: 90vh;
   align-items: flex;

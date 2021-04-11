@@ -59,7 +59,13 @@ public class CustomerResource {
         mongoService.insertMany(collection, customerDocuments);
         Map<String, String> response = new HashMap<>();
         response.put("message", "Customer(s) created successfully");
-        return Response.ok(response).build();
+        return Response.ok(response)
+        		.header("Access-Control-Allow-Origin", "*")
+        		.header("Access-Control-Allow-Credentials", "true")
+        		.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, HEAD")
+        		.header("Access-Control-Max-Age", "3600")
+        		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization, Origin")        		
+        		.build();
     }
     
     @GET
@@ -80,12 +86,20 @@ public class CustomerResource {
 	
 	@GET
 	@Path("/count")
+    @Produces(MediaType.APPLICATION_JSON)
 	public Response getCount() {
 		// count number of records
         long count = collection.count();
         Map<String, Long> response = new HashMap<>();
+        
         response.put("count", count);
-        return Response.ok(response).build();
+        return Response.ok(response)
+        		.header("Access-Control-Allow-Origin", "*")
+        		.header("Access-Control-Allow-Credentials", "true")
+        		.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, HEAD")
+        		.header("Access-Control-Max-Age", "3600")
+        		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization, Origin")
+        		.build();
 	}
 	
 
@@ -119,6 +133,12 @@ public class CustomerResource {
         Map<String, String> response = new HashMap<>();
         response.put("message", "deleted all documents in collection successfully");
         mongoService.deleteAll(collection);
-        return Response.ok(response).build();
+        return Response.ok(response)
+        		.header("Access-Control-Allow-Origin", "*")
+        		.header("Access-Control-Allow-Credentials", "true")
+        		.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, HEAD")
+        		.header("Access-Control-Max-Age", "3600")
+        		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization, Origin")        		
+        		.build();
     }
 }

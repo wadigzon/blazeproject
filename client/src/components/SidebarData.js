@@ -1,7 +1,10 @@
 import React from 'react'
-import * as FaIcons from "react-icons/fa"
+
 import * as AiIcons from 'react-icons/ai'
-import * as IoIcons from 'react-icons/io'
+import * as CgIcons from 'react-icons/cg';
+import * as BsIcons from 'react-icons/bs';
+
+import * as FcIcons from 'react-icons/fc';
 
 export const SidebarData = [
     {
@@ -11,34 +14,28 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Reports',
-        path: '/reports',
-        icon: <IoIcons.IoIosPaper />,
+        title: 'Insert 10K',
+        path: '/insert10k',
+        icon: <CgIcons.CgInsertBefore />,
         cName: 'nav-text'
     },
     {
-        title: 'Products',
-        path: '/products',
-        icon: <FaIcons.FaCartPlus />,
+        title: 'Display Data',
+        path: '/displaydata',
+        icon: <BsIcons.BsTable />,
         cName: 'nav-text'
     },
     {
-        title: 'Team',
-        path: '/team',
-        icon: <IoIcons.IoMdPeople />,
+        title: 'Display Count',
+        path: '/displaycount',
+        icon: <AiIcons.AiOutlineFieldNumber />,
         cName: 'nav-text'
     },
     {
-        title: 'Messages',
-        path: '/messages',
-        icon: <FaIcons.FaEnvelopeOpenText />,
+        title: 'Delete All',
+        path: '/deleteall',
+        icon: <FcIcons.FcDeleteDatabase />,
         cName: 'nav-text'
-    },
-    {
-        title: 'Support',
-        path: '/support',
-        icon: <IoIcons.IoMdHelpCircle />,
-        cName: 'nav-text'
-    },
+    }
 
 ];
