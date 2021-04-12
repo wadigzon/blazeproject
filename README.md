@@ -49,5 +49,10 @@ Guice is a java library made by google that helps in implementing dependency inj
 2. Refactor: On Client we do not need to create different pages for 1K, 10K, 100K loading, we can just create a single component and inject the desired json files as paramenters (props)
 3. I needed to read more about using guice, it's integrated in the project but not being implemented (may be more time to find the right use case for a dependency manager in the server app)
 4. Client needs lots of styling work
+5. Add a page to create and update new and existing customers
+
+# Problems and challenges found
+1. Wasted a lot of time with CORS issues (postman worked just fine, but getting my react app to successfully talk to the API took a while)
+2. Time constraint: Current job, busy week, 3 year old kid at home needs lots of attention
 
 Thanks for the opportunity, learned a lot and enjoyed it!
