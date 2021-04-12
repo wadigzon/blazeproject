@@ -14,9 +14,21 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
+        title: 'Insert 1K',
+        path: '/insert1K',
+        icon: <CgIcons.CgInsertBeforeO />,
+        cName: 'nav-text'
+    },
+    {
         title: 'Insert 10K',
         path: '/insert10k',
         icon: <CgIcons.CgInsertBefore />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Insert 100K',
+        path: '/insert100k',
+        icon: <CgIcons.CgInsertBeforeR />,
         cName: 'nav-text'
     },
     {

@@ -56,10 +56,10 @@ export function coalesce(potentiallyUndefinedValue, valueIfUndefined) {
 export function postRequest(baseURL, payload, onSuccess , onFail, overrideDefaults) {
     let myInit = {
         method: 'post',
-        //headers: {
-        //'Accept': 'application/json, text/plain, */*',
-        //'Content-Type': 'application/json'
-        //},
+        headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+        },
         mode: 'cors',
         cache: 'default',
         body: JSON.stringify(payload)

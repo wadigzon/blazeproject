@@ -4,9 +4,9 @@ import LoadingComponent from '../components/LoadingComponent'
 import { toastError } from "../utils/toastrFunctions";
 import { postRequest } from "../utils/urlFunctions";
 import { INSERT_CUSTOMERS_URL } from "../constants/urls";
-import customers from '../data/100KCustomers.json'
+import customers from '../data/1KCustomers.json'
 
-export default class Insert100K extends Component {
+export default class Insert1K extends Component {
     constructor(props) {
         super();
         this.state = {
@@ -56,7 +56,7 @@ export default class Insert100K extends Component {
         return isLoading ?
         (<LoadingComponent isLoading />) :
         (
-            <div className='insert100k'>
+            <div className='insert10k'>
                 <h1>Inserted {count} customer</h1>
             </div>
         )

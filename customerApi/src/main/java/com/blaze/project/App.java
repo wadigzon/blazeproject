@@ -1,6 +1,13 @@
 package com.blaze.project;
 
+import java.util.EnumSet;
+
+import javax.servlet.DispatcherType;
+import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
+
 import org.bson.Document;
+import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +35,18 @@ public class App extends Application<ProjectConfiguration>
     @Override
     public void run(ProjectConfiguration config, Environment env) throws Exception {
         LOGGER.info("Method App#run() called");
+        // Enable CORS headers
+        final FilterRegistration.Dynamic cors =
+                env.servlets().addFilter("CORS", (Class<? extends Filter>) CrossOriginFilter.class);
+        // Configure CORS parameters
+        cors.setInitParameter("allowedOrigins", "http://localhost:3000"); // host and port of UI dev server comes here
+        cors.setInitParameter("allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin");
+        cors.setInitParameter("allowedMethods", "OPTIONS,GET,PUT,POST,DELETE,HEAD,UPDATE");
+        // Add URL mapping
+        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");      
+        // DO NOT pass a preflight request to down-stream auth filters
+        // unauthenticated preflight requests should be permitted by spec
+        cors.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM, Boolean.FALSE.toString());        
 
         MongoClientURI uri = new MongoClientURI(
         	    "mongodb+srv://" 

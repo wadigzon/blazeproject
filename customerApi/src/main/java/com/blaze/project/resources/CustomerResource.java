@@ -39,7 +39,7 @@ public class CustomerResource {
         String json = gson.toJson(customer);
         mongoService.insertOne(collection, new Document(BasicDBObject.parse(json)));
         Map<String, String> response = new HashMap<>();
-        response.put("message", "Customer created successfully");
+        response.put("message", "One customer created successfully");
         return Response.ok(response).build();
 	}
     
@@ -58,13 +58,8 @@ public class CustomerResource {
         }
         mongoService.insertMany(collection, customerDocuments);
         Map<String, String> response = new HashMap<>();
-        response.put("message", "Customer(s) created successfully");
+        response.put("message", customers.size() + " customer(s) created successfully");
         return Response.ok(response)
-        		.header("Access-Control-Allow-Origin", "*")
-        		.header("Access-Control-Allow-Credentials", "true")
-        		.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, HEAD")
-        		.header("Access-Control-Max-Age", "3600")
-        		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization, Origin")        		
         		.build();
     }
     
@@ -73,11 +68,6 @@ public class CustomerResource {
     public Response getCustomers() {
         List<Document> documents = mongoService.find(collection);
         return Response.ok(documents)
-        		.header("Access-Control-Allow-Origin", "*")
-        		.header("Access-Control-Allow-Credentials", "true")
-        		.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, HEAD")
-        		.header("Access-Control-Max-Age", "3600")
-        		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization, Origin")
         		.build();
     }
     
@@ -97,19 +87,11 @@ public class CustomerResource {
 		// count number of records
         long count = collection.count();
         Map<String, Long> response = new HashMap<>();
-        
         response.put("count", count);
         return Response.ok(response)
-        		.header("Access-Control-Allow-Origin", "*")
-        		.header("Access-Control-Allow-Credentials", "true")
-        		.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, HEAD")
-        		.header("Access-Control-Max-Age", "3600")
-        		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization, Origin")
         		.build();
 	}
-	
 
-	
 	@PUT
 	// @Path("/{id}")
 	@Timed
@@ -137,14 +119,11 @@ public class CustomerResource {
     @Path("/deleteAll")
     public Response deleteAll() {
         Map<String, String> response = new HashMap<>();
-        response.put("message", "deleted all documents in collection successfully");
+        // count number of documents in collection
+        long count = collection.count();
         mongoService.deleteAll(collection);
+        response.put("message", "deleted all (" + count + ") documents in collection successfully");
         return Response.ok(response)
-        		.header("Access-Control-Allow-Origin", "*")
-        		.header("Access-Control-Allow-Credentials", "true")
-        		.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, HEAD")
-        		.header("Access-Control-Max-Age", "3600")
-        		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization, Origin")        		
         		.build();
     }
 }

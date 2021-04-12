@@ -10,15 +10,16 @@ export default class DeleteAll extends Component {
         super();
         this.state = {
             isLoading: true,
+            message: undefined,
         };
     }
     componentDidMount() {
         const callback = (data) => {
-            this.setState({ isLoading: false, count: data.count });
+            this.setState({ isLoading: false, message: data.message });
 
         }
         const errorCallback = (body) => {
-            const message = body && body.message ? body.message : "Failed to retrieve customer count";
+            const message =  "Failed to remove all customers";
             // stop spinning
             this.setState({ isLoading: false });
             toastError(message);
@@ -46,12 +47,12 @@ export default class DeleteAll extends Component {
 
 
     render() {
-        const { isLoading } = this.state
+        const { isLoading, message } = this.state
 
         return isLoading ?
             (<LoadingComponent isLoading />) :
             ( <div className='deleteall'>
-                <h1>Customers Deleted!</h1>
+                <h1>{message}</h1>
             </div> );
     }
 
