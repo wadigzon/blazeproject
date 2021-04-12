@@ -32,15 +32,15 @@ Blaze Engineering Tech Project
   * Delete All: Willl reset the collection (remove all documents), you can check that records have been deleted by going to *Display Count* and seeing that the number of customers is indeed zero.
 
 # Questions (and answers: my own words, so it might not be the correct answer)
-1. When dealing with a large volume of data, what can we do to make fetch faster?
+**1. When dealing with a large volume of data, what can we do to make fetch faster?**
 
 Running this app was not that bad because client and server were in the same machine, to insert 100K records it took twelve (12) seconds, to load it before displaying onto the grid, took three (3) seconds, but surely, if these was the real world, we would probably see some more delays for loading the data. If we're dealing with small sets of data (say a configuration table of 100 or so records) that's not a problem. Also remember that we're dealing with a small document (4 fields only) this will increase when we're dealing with bigger documents. For bigger datasets it is recommended to do lazy loading, i.e. we only load a small portion of data each time, say 100 records, and as we move along (scroll) we keep loading more and more onto the client. This requires some extra configuration on the server, say another API endopoint to load the given documents at a given location in the data set (e.g. give me 100 documents that start at position 4500 out of 100,000 total). Ag grid supports "infinite" scrolling (I have done this in my last job but needs some additional settings on both client and server).
 
-2. What is the primary difference between NoSQL versus SQL
+**2. What is the primary difference between NoSQL versus SQL**
 
 SQL is relational meaning tables (collections) are related via some fields (keys) inside the tables. e.g. we have customer table (that has a field called customerId that identifies that customer), and we also have order table, that has information about the order, as we know this order is also made by a customer, we do not need to store the entire information of the user in this same space of data, we only store the key (id) of that user and that becomes the "relationship" of these two tables. NoSql are non-relational databases.
 
-3. What is Guice and what is the purpose of it?
+**3. What is Guice and what is the purpose of it?**
 
 Guice is a java library made by google that helps in implementing dependency injection, dependency injection is a mechanism in which we can "inject" desired dependencies into an object via its constructor, so we can create loosely coupled objects in our software, whereas if we use "other" ways such as inheritance and composition we create tightly coupled objects, which doesn't help in scalability and maintanability of our software (we need our middleware to embrace change and do it in an efficient manner)
 
