@@ -46,7 +46,7 @@ Guice is a java library made by google that helps in implementing dependency inj
 
 # Room for improvements
 1. Implement lazy loading for data vizualization
-2. Refactor: On Client we do not need to create different pages for 1K, 10K, 100K loading, we can just create a single component and inject the desired json files as paramenters (props)
+2. Refactor: On Client we do not need to create different pages for 1K, 10K, 100K loading, we can just create a single component and inject the desired json file as parameter (props)
 3. I needed to read more about using guice, it's integrated in the project but not being implemented (may be more time to find the right use case for a dependency manager in the server app)
 4. Client needs lots of styling work
 5. Add a page to create and update new and existing customers
