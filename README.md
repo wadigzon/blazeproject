@@ -3,7 +3,7 @@ Blaze Engineering Tech Project
 
 ## content
 1. customerApi: Rest API server implemented using DropWizard
-2. customerApi/config.yaml: contains information for connection to the database
+2. customerApi/config.yaml: contains information for connecting to the database
 3. client: Web App using React JS and ag-grid (for data vizualization)
 
 **The mongodb database is running on the cloud I used my personal free tier at www.mongodb.com**
